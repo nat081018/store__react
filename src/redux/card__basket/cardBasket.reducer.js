@@ -1,7 +1,9 @@
 import CartActionTypes from "./cardBasket.type.js";
+import { addItemToTheBasket } from "./cardBasket.utilts.js";
 
 const INITIAL_STATE = {
   hidden: true,
+  cardItems: [],
 };
 
 const cardReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +13,12 @@ const cardReducer = (state = INITIAL_STATE, action) => {
         ...state,
         hidden: !state.hidden,
       };
+    case CartActionTypes.ADD_ITEM_TO_THE_BASKET: {
+      return {
+        ...state,
+        cardItems: addItemToTheBasket(state.cardItems, action.payload),
+      };
+    }
 
     default:
       return state;
