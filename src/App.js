@@ -8,6 +8,9 @@ import SignInSignUp from "./pages/sign__in__sign__up/SignInSignUp.jsx";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utilit.js";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/users/users.action.js";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/users/users.selectors.js";
+import CheckOut from "./pages/check__out/CheckOut.jsx";
 
 const HatsPage = () => (
   <div>
@@ -60,13 +63,16 @@ class App extends Component {
               this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
             }
           />
+          <Route exact path="/checkout" component={CheckOut} />
         </Switch>
       </div>
     );
   }
 }
 
-const mapSatateToProps = ({ user }) => ({ currentUser: user.currentUser });
+const mapSatateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });

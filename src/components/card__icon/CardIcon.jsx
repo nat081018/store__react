@@ -4,6 +4,7 @@ import "./card__icon.scss";
 import { connect } from "react-redux";
 import { toggleCardHidden } from "../../redux/card__basket/cardBasket.action.js";
 import { selectCardCount } from "../../redux/card__basket/cardBasket.selectors.js";
+import { createStructuredSelector } from "reselect";
 
 const CardIcon = ({ toggleCardHidden, countItem }) => (
   <div className="card__icon" onClick={toggleCardHidden}>
@@ -16,8 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCardHidden: () => dispatch(toggleCardHidden()),
 });
 
-const mapStateToProps = (state) => ({
-  countItem: selectCardCount(state),
+const mapStateToProps = createStructuredSelector({
+  countItem: selectCardCount,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardIcon);
