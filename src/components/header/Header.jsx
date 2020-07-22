@@ -16,10 +16,11 @@ const Header = ({ currentUser, hidden }) => (
       <Logo className="logo" />
     </Link>
     <div className="header__options">
+      <Link className="header__option" to="/">HOME</Link>
       <Link className="header__option" to="/shop">
         SHOP
       </Link>
-      <Link className="header__option" to="/shop">
+      <Link className="header__option" to="/contact">
         CONTACT
       </Link>
       {currentUser ? (
