@@ -1,4 +1,17 @@
 .contact__wrapper {
+   
+    padding-top: 100px;
     color: grey;
+    font-size: 18px;
+    line-height: 25px;
+    
+}
+.contact__wrapper > a {
+    color: inherit
+}
+
+.contact__wrapper > a:hover {
+    color: red;
+    font-size: 20px;
     
 }
