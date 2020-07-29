@@ -1,10 +1,11 @@
 import React, {Component} from "react"
 import "./sign-in.style.scss"
+import FromInput from "../../components/form-input/form-input.component"
 
 
 class SignIn extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             email: "",
             password: ""
@@ -12,7 +13,7 @@ class SignIn extends Component {
     } 
 
     hendeleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         this.setState({
             email: "",
@@ -21,32 +22,33 @@ class SignIn extends Component {
     }
 
     hendleChange = (event) => {
-        const {name, value} = event.target
+        const {name, value} = event.target;
 
-        this.setState =({
+        this.setState({
             [name]: value
         })
     }
 
     render() {
         return (
-            <div> 
+            <div className="sign-in"> 
                 <h1>I'm already have an account</h1>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.hendeleSubmit}>
-                    <input name="email" 
+                    <FromInput
+                    name="email" 
                     type="email" 
+                    label="email"
                     value={this.state.email} 
-                    onChange={this.hendleChange}
-                    required/>
-                    <label>Email</label>
-                    <input 
+                    hendleChange={this.hendleChange}
+                    required />
+                    <FromInput
                     name="password" 
                     type="password" 
                     value={this.state.email} 
-                    onChange={this.hendleChange}
-                    required/>
-                    <label>Password</label>
+                    label="password"
+                    hendleChange={this.hendleChange}
+                    required />
 
                     < input type="submit" value="Submit form"/>
                 </form>
