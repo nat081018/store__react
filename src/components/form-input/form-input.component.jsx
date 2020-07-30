@@ -5,7 +5,7 @@ const FromInput = ({hendleChange, label, ...otherInputProps}) => (
     <div className="group">
         <input className="form-input" onChange={hendleChange}  {...otherInputProps}/>
         {
-           label ? (<lable className={` ${otherInputProps.value.length ? "shrink" : ""} form-input-label`}>{label}</lable>) : null
+           label ? (<label className={` ${otherInputProps.value.length ? "shrink" : ""} form-input-label`}>{label}</label>) : null
         }
     </div>
 )
