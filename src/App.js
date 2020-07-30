@@ -3,9 +3,9 @@ import "./App.css";
 import {Route, Switch}  from "react-router-dom"
 
 
-import Header from "./components/header/Header.component"
+import Header from "./components/header/header.component"
 import Homepage from "./pages/homepage/homepage.component"
-import Contact from "./components/contact/contact.component"
+// import Contact from "./components/contact/contact.component"
 import ShopPage from "./pages/shop/shopPage.component"
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
 
@@ -42,7 +42,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Homepage}/>
           <Route  path="/shop" component={ShopPage}/>
-          <Route path="/contact" component={Contact} />
+          {/* <Route path="/contact" component={Contact} /> */}
           <Route path="/signin" component={SignInAndSignUpPage}/>
         </Switch>
       </div>
