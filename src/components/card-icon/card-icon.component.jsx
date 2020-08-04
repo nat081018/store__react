@@ -2,7 +2,7 @@ import React from "react"
 import {connect} from "react-redux"
 import "./card-icon.style.scss"
 
-import {toggleCardHidden} from "../../redux/card/card.actions" 
+import {toggleCardHidden, addItemToCard} from "../../redux/card/card.actions" 
 
 import {ReactComponent as ShoppingBag} from "../../assets/shopping-bag.svg"
 
@@ -14,8 +14,13 @@ const CardIcon = ({toggleCardHidden}) => (
     </div>
 )
 
+const mapStateToProps = () => ({
+    
+})
+
 const  mapDispatchToProps = (dispatch)  => ({
-    toggleCardHidden: () => dispatch(toggleCardHidden())
+    toggleCardHidden: () => dispatch(toggleCardHidden()),
+    addItemToCard: () => dispatch(addItemToCard())
 })
 export default connect(
     null, 

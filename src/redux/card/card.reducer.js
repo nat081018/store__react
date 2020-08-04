@@ -1,4 +1,5 @@
 import cardActionsType from "./card.types"
+import {addItemsToCard} from "./card.utilits"
 
 const INITIAL_STATE = {
     hidden: true, 
@@ -14,7 +15,7 @@ const INITIAL_STATE = {
         }
         case cardActionsType.EDD_ITEM: return {
             ...state,
-            cardItems: [state.cardItems , action.payload]
+            cardItems: addItemsToCard(state.cardItems, action.payload)
         }
     
         default: return state
