@@ -7,15 +7,20 @@ import {toggleCardHidden, addItemToCard} from "../../redux/card/card.actions"
 import {ReactComponent as ShoppingBag} from "../../assets/shopping-bag.svg"
 
 
-const CardIcon = ({toggleCardHidden}) => (
+const CardIcon = ({toggleCardHidden, itemCount}) => (
     <div className="cart-icon" onClick={toggleCardHidden}>
         <ShoppingBag  className="shopping-icon"/>
-        <span className="item-count">0</span>
+<span className="item-count">{itemCount}</span>
     </div>
 )
 
-const mapStateToProps = () => ({
-    
+// const mapStateToProps = ({card: {cardItems}}) => ({
+//     itemCount: cardItems.reduce((accumItems, cardItem) => accumItems + cardItem.quantity , 0)
+
+// })
+const mapStateToProps = (state) => ({
+    itemCount: state.card.cardItems.reduce((accumItems, cardItem) => accumItems + cardItem.quantity , 0)
+
 })
 
 const  mapDispatchToProps = (dispatch)  => ({
@@ -23,6 +28,6 @@ const  mapDispatchToProps = (dispatch)  => ({
     addItemToCard: () => dispatch(addItemToCard())
 })
 export default connect(
-    null, 
+    mapStateToProps, 
     mapDispatchToProps
 )(CardIcon)
