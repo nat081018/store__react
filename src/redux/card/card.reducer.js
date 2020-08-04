@@ -1,7 +1,8 @@
 import cardActionsType from "./card.types"
 
 const INITIAL_STATE = {
-    hidden: true
+    hidden: true, 
+    cardItems: []
 }
 
 
@@ -10,6 +11,10 @@ const INITIAL_STATE = {
         case cardActionsType.TOGGLE_CART_HIDDEN: return {
             ...state,
             hidden: !state.hidden   
+        }
+        case cardActionsType.EDD_ITEM: return {
+            ...state,
+            cardItems: [state.cardItems , action.payload]
         }
     
         default: return state
