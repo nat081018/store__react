@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import "./card-icon.style.scss"
 
 import {toggleCardHidden, addItemToCard} from "../../redux/card/card.actions" 
+import {selectCardItemsReduce} from "../../redux/card/card.selectors"
 
 import {ReactComponent as ShoppingBag} from "../../assets/shopping-bag.svg"
 
@@ -19,8 +20,8 @@ const CardIcon = ({toggleCardHidden, itemCount}) => (
 
 // })
 const mapStateToProps = (state) => ({
-    itemCount: state.card.cardItems.reduce((accumItems, cardItem) => accumItems + cardItem.quantity , 0)
-
+    // itemCount: state.card.cardItems.reduce((accumItems, cardItem) => accumItems + cardItem.quantity , 0)
+    itemCount: selectCardItemsReduce(state)
 })
 
 const  mapDispatchToProps = (dispatch)  => ({
