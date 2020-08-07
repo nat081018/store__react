@@ -9,3 +9,15 @@ export const addItemToCard = (item) => ({
     payload: item
 
 })
+
+export const deleteItemFromCard = (item) => ({
+    type: cardActionsType.DELETE_ITEM,
+    payload: item
+
+})
+
+
+export const removeCardItem = (item) => ({
+    type: cardActionsType.REMOVE_ITEM,
+    payload: item
+})

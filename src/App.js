@@ -9,8 +9,10 @@ import Homepage from "./pages/homepage/homepage.component"
 // import Contact from "./components/contact/contact.component"
 import ShopPage from "./pages/shop/shopPage.component"
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
-
+import CheckoutPage from "./pages/checkout-page/checkout.component"
 import {auth, creacteUserProfileDocument} from "./firebase/firebase.utils"
+
+import {selectUser} from "./redux/user/user.selectors"
 
 import {setCurrentUser} from "./redux/user/user.actions"
 
@@ -56,6 +58,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Homepage}/>
           <Route  path="/shop" component={ShopPage}/>
+          <Route exact path="/checkout" component={CheckoutPage}/>
           {/* <Route path="/contact" component={Contact} /> */}
           <Route exact path="/signin" render={() => 
             this.props.currentUser ? 
@@ -68,8 +71,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps = (state) => ({
+  currentUser: selectUser(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
