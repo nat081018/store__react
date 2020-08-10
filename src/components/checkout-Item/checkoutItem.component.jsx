@@ -4,6 +4,8 @@ import "./checkoutItem.style.scss"
 import {connect} from "react-redux"
 import {deleteItemFromCard,  addItemToCard, removeCardItem} from "../../redux/card/card.actions"
 
+
+
 const CheckoutItem = ({cardItem,  deleteItemFromCard,  addItemToCard, removeCardItem }) => {
   const {imageUrl, name, quantity, price} = cardItem
   
@@ -20,7 +22,11 @@ const CheckoutItem = ({cardItem,  deleteItemFromCard,  addItemToCard, removeCard
     </div>
     <span className='price'>{price}</span>
     <div className='remove-button' onClick={() => deleteItemFromCard(cardItem)}>&#10005;</div>
-  </div>
+    </div>
+  
+
+
+  
 )
 }
 const mapDispatchToProps = (dispatch) => ({

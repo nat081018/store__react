@@ -19,6 +19,7 @@ const Collection = ({collection}) => {
                     ))
                 }
             </div>
+            
         </div>
 
     )
