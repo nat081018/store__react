@@ -10,18 +10,19 @@ import Homepage from "./pages/homepage/homepage.component"
 import ShopPage from "./pages/shop/shopPage.component"
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
 import CheckoutPage from "./pages/checkout-page/checkout.component"
-import {auth, creacteUserProfileDocument} from "./firebase/firebase.utils"
+import {auth, creacteUserProfileDocument,  addCollectionToTheFireStore} from "./firebase/firebase.utils"
 
 import {selectUser} from "./redux/user/user.selectors"
 
 import {setCurrentUser} from "./redux/user/user.actions"
+import { selectCollectionFromPreview } from "./redux/shop/shop.selector"
 
 class App extends Component {
    
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser, collectionArrey} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged( 
       async (userAuth) => {
@@ -42,6 +43,7 @@ class App extends Component {
       }
 
       setCurrentUser(userAuth)
+      addCollectionToTheFireStore( "newCollection", collectionArrey.map(({title, items}) => ({title, items})))
       
     });
   }
@@ -72,7 +74,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: selectUser(state)
+  currentUser: selectUser(state),
+  collectionArrey: selectCollectionFromPreview(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

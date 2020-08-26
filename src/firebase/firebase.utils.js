@@ -16,6 +16,8 @@ const config = {
 firebase.initializeApp(config);
 
 export const creacteUserProfileDocument = async (userAuth, addInitionalData) => {
+
+
   if(!userAuth) return;
 
   const  userRef  = firestore.doc(`users/${userAuth.uid}`)
@@ -39,6 +41,23 @@ export const creacteUserProfileDocument = async (userAuth, addInitionalData) => 
     }
   }
   return userRef
+}
+
+export const addCollectionToTheFireStore = async (collectionKey, objectToAdd) => {
+  const collectionRef = firestore.collection(collectionKey)
+  console.log(collectionRef)
+
+   const batch = firestore.batch()
+
+   objectToAdd.forEach((obj) => {
+     const newDocRef = collectionRef.doc()
+     console.log(newDocRef)
+     batch.set(newDocRef, obj)
+   })
+
+  console.log(objectToAdd)
+
+  return await batch.commit() // error in this line
 }
 
 
